@@ -104,7 +104,7 @@ class LazyCalc {
     const result = this.compose(this.operators)(this.initValue);
     console.log("result:", result);
     this.initValue = 0;
-    return isNaN(result) ? fallback : result;
+    return Number.isNaN(result) ? fallback : result;
   }
 }
 
