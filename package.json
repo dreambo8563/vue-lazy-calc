@@ -2,17 +2,26 @@
   "name": "vue-lazy-calc",
   "version": "0.1.0",
   "private": true,
+  "author": "dreambo8563",
   "scripts": {
+    "debug": "tsc && node types/main.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "npm run lint && vue-cli-service build --target lib --name vue-storage-watcher ./src/main.ts",
-    "report": "npm run lint && vue-cli-service build --report --target lib --name vue-storage-watcher ./src/main.ts",
+    "build-bundle": "npm run lint && vue-cli-service build --target lib --name vue-lazy-calc ./src/main.ts",
+    "report": "npm run lint && vue-cli-service build --report --target lib --name vue-lazy-calc ./src/main.ts",
     "test": "npm run build-bundle",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
     "vue": "^2.6.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreambo8563/vue-lazy-calc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dreambo8563/vue-lazy-calc/issues"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.5.0",
