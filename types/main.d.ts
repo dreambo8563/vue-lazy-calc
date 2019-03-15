@@ -1,25 +1,17 @@
-declare type operatorFunc = (i: number | string) => number;
-interface Math {
-    [key: string]: any;
+import Vue, { VueConstructor } from "./vue";
+export declare type operatorFunc = (i: number | string) => number;
+export interface ILazyCalc {
+  lazy(init?: number): ILazyCalc;
+  add(number: number): ILazyCalc;
+  divide(y: number): ILazyCalc;
+  multiply(y: number): ILazyCalc;
+  round(precision?: number): ILazyCalc;
+  floor(precision?: number): ILazyCalc;
+  ceil(precision?: number): ILazyCalc;
+  value(fallback?: any): any;
 }
-declare class LazyCalc {
-    initValue: number;
-    operators: operatorFunc[];
-    private compose;
-    private createRound;
-    constructor(init?: number);
-    clone(operators: operatorFunc[]): LazyCalc;
-    lazy(init?: number): LazyCalc;
-    add(y: number): LazyCalc;
-    divide(y: number): LazyCalc;
-    subtract(y: number): LazyCalc;
-    multiply(y: number): LazyCalc;
-    ceil(precision?: number): LazyCalc;
-    floor(precision?: number): LazyCalc;
-    round(precision?: number): LazyCalc;
-    value(fallback?: any): any;
-}
-declare const instance: LazyCalc;
-declare const a: LazyCalc;
-declare const b: any;
-declare const c: any;
+export declare type LzCalcPlugin = {
+  install(vue: VueConstructor<Vue>, options?: any): void;
+};
+declare const instantce: LzCalcPlugin;
+export default instantce;

@@ -1,7 +1,6 @@
-type operatorFunc = (i: number | string) => number;
-interface Math {
-  [key: string]: any; // Add index signature
-}
+import Vue, { VueConstructor } from "vue";
+export type operatorFunc = (i: number | string) => number;
+type CalcMethod = "ceil" | "floor" | "round";
 class LazyCalc {
   initValue: number = 0;
   operators: operatorFunc[];
@@ -11,8 +10,8 @@ class LazyCalc {
         nextFn(prevFn(...args)),
       (i: any) => i
     );
-  private createRound(methodName: string, precision: number = 0) {
-    const func: operatorFunc = Math[methodName];
+  private createRound(methodName: CalcMethod, precision: number = 0) {
+    const func = <operatorFunc>Math[methodName];
     return function(number: number | string): number {
       console.log(methodName, number);
       precision =
@@ -39,7 +38,7 @@ class LazyCalc {
     return this;
   }
 
-  clone(operators: operatorFunc[]) {
+  private clone(operators: operatorFunc[]) {
     let tmp = new LazyCalc(this.initValue);
     tmp.operators = operators;
     return tmp;
@@ -108,11 +107,29 @@ class LazyCalc {
   }
 }
 
-const instance = new LazyCalc();
-
-const a = instance.add(10).multiply(2);
-
-const b = a.subtract(13).value(null);
-const c = a.divide(2).value();
-
-console.log(`b: ${b}`, `c: ${c}`);
+export interface ILazyCalc {
+  lazy(init?: number): ILazyCalc;
+  add(number: number): ILazyCalc;
+  divide(y: number): ILazyCalc;
+  multiply(y: number): ILazyCalc;
+  round(precision?: number): ILazyCalc;
+  floor(precision?: number): ILazyCalc;
+  ceil(precision?: number): ILazyCalc;
+  value(fallback?: any): any;
+}
+export type LzCalcPlugin = {
+  install(vue: VueConstructor<Vue>, options?: any): void;
+};
+const instantce: LzCalcPlugin = {
+  install(vue, options) {
+    let alias = "$lzCalc";
+    const p = new LazyCalc(options) as ILazyCalc;
+    vue.prototype[alias] = p;
+    Object.defineProperty(Vue, `${alias}`, {
+      get() {
+        return p;
+      }
+    });
+  }
+};
+export default instantce;

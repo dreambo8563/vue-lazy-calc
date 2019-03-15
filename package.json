@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "dreambo8563",
+  "main": "dist/vue-lazy-calc.umd.min.js",
   "scripts": {
     "debug": "tsc && node types/main.js",
     "serve": "vue-cli-service serve",
@@ -13,6 +14,7 @@
     "test": "npm run build-bundle",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
+  "typings": "types/main.d.ts",
   "dependencies": {
     "vue": "^2.6.6"
   },
@@ -36,6 +38,21 @@
     "vue-template-compiler": "^2.5.21",
     "cz-conventional-changelog": "^2.1.0"
   },
+  "files": [
+    "dist/*",
+    "src/*",
+    "types/*.d.ts",
+    "package.json",
+    "*.js",
+    "README.md"
+  ],
+  "keywords": [
+    "vue",
+    "calculator",
+    "lazy evaluation",
+    "chain",
+    "lazy"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
