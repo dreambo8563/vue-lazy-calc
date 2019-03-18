@@ -13,6 +13,9 @@ class LazyCalc {
   private createRound(methodName: CalcMethod, precision: number = 0) {
     const func = <operatorFunc>Math[methodName];
     return function(number: number | string): number {
+      if (Number.isNaN(+number) || Number.isNaN(+precision)) {
+        return NaN;
+      }
       precision =
         precision == null
           ? 0
@@ -48,6 +51,9 @@ class LazyCalc {
 
   add(y: number): LazyCalc {
     const operation = function(x: number | string) {
+      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+        return NaN;
+      }
       return +x + +y;
     };
 
@@ -55,6 +61,9 @@ class LazyCalc {
   }
   divide(y: number): LazyCalc {
     const operation = function(x: number | string) {
+      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+        return NaN;
+      }
       return +x / +y;
     };
     // this.operators.unshift(operation);
@@ -63,6 +72,9 @@ class LazyCalc {
 
   subtract(y: number): LazyCalc {
     const operation = function(x: number | string) {
+      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+        return NaN;
+      }
       return +x - +y;
     };
     // this.operators.unshift(operation);
@@ -70,6 +82,9 @@ class LazyCalc {
   }
   multiply(y: number): LazyCalc {
     const operation = function(x: number | string) {
+      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+        return NaN;
+      }
       return +x * +y;
     };
     // this.operators.unshift(operation);
