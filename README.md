@@ -1,7 +1,7 @@
 # vue-lazy-calc
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/842028f156034786bad7a874b7fa513f)](https://app.codacy.com/app/dreambo8563/vue-lazy-calc?utm_source=github.com&utm_medium=referral&utm_content=dreambo8563/vue-lazy-calc&utm_campaign=Badge_Grade_Dashboard)
-[![Build Status](https://travis-ci.com/dreambo8563/vue-lazy-calc.svg?branch=master)](https://travis-ci.com/dreambo8563/vue-lazy-calc)
+[![Build Status](https://travis-ci.com/dreambo8563/vue-lazy-calc.svg?branch=master)](https://travis-ci.com/dreambo8563/vue-lazy-calc) [![Greenkeeper badge](https://badges.greenkeeper.io/dreambo8563/vue-lazy-calc.svg)](https://greenkeeper.io/)
 
 this is a just support simple calculation in lazy way.
 (inspired by lodash)
