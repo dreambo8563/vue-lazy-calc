@@ -4,6 +4,7 @@
   "private": false,
   "author": "dreambo8563",
   "main": "dist/vue-lazy-calc.umd.min.js",
+  "license": "MIT",
   "scripts": {
     "debug": "tsc && node types/main.js",
     "serve": "vue-cli-service serve",
@@ -15,6 +16,7 @@
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "typings": "types/main.d.ts",
+  "description": "A simple calculator with lazy evaluation featuer",
   "dependencies": {
     "vue": "^2.6.6"
   },

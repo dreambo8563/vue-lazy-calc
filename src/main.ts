@@ -1,5 +1,5 @@
 import Vue, { VueConstructor } from "vue";
-export type operatorFunc = (i: number | string) => number;
+type operatorFunc = (i: number | string) => number;
 type CalcMethod = "ceil" | "floor" | "round";
 class LazyCalc {
   initValue: number = 0;

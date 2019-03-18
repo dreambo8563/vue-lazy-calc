@@ -1,5 +1,4 @@
 import Vue, { VueConstructor } from "./vue";
-export declare type operatorFunc = (i: number | string) => number;
 interface ILazyCalc {
   lazy(init?: number): ILazyCalc;
   add(number: number): ILazyCalc;
