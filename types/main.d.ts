@@ -1,6 +1,5 @@
 import Vue, { VueConstructor } from "./vue";
-export declare type operatorFunc = (i: number | string) => number;
-export interface ILazyCalc {
+interface ILazyCalc {
   lazy(init?: number): ILazyCalc;
   add(number: number): ILazyCalc;
   divide(y: number): ILazyCalc;
@@ -15,3 +14,4 @@ export declare type LzCalcPlugin = {
 };
 declare const instantce: LzCalcPlugin;
 export default instantce;
+export { ILazyCalc };

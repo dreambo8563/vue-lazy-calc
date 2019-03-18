@@ -1,5 +1,5 @@
 import Vue, { VueConstructor } from "vue";
-export type operatorFunc = (i: number | string) => number;
+type operatorFunc = (i: number | string) => number;
 type CalcMethod = "ceil" | "floor" | "round";
 class LazyCalc {
   initValue: number = 0;
@@ -13,7 +13,6 @@ class LazyCalc {
   private createRound(methodName: CalcMethod, precision: number = 0) {
     const func = <operatorFunc>Math[methodName];
     return function(number: number | string): number {
-      console.log(methodName, number);
       precision =
         precision == null
           ? 0
@@ -49,8 +48,6 @@ class LazyCalc {
 
   add(y: number): LazyCalc {
     const operation = function(x: number | string) {
-      console.log("add");
-      console.log("x:", x, "y:", y);
       return +x + +y;
     };
 
@@ -58,8 +55,6 @@ class LazyCalc {
   }
   divide(y: number): LazyCalc {
     const operation = function(x: number | string) {
-      console.log("divide");
-      console.log("x:", x, "y:", y);
       return +x / +y;
     };
     // this.operators.unshift(operation);
@@ -68,8 +63,6 @@ class LazyCalc {
 
   subtract(y: number): LazyCalc {
     const operation = function(x: number | string) {
-      console.log("subtract");
-      console.log("x:", x, "y:", y);
       return +x - +y;
     };
     // this.operators.unshift(operation);
@@ -77,8 +70,6 @@ class LazyCalc {
   }
   multiply(y: number): LazyCalc {
     const operation = function(x: number | string) {
-      console.log("multiply");
-      console.log("x:", x, "y:", y);
       return +x * +y;
     };
     // this.operators.unshift(operation);
@@ -101,13 +92,12 @@ class LazyCalc {
   }
   value(fallback: any = 0) {
     const result = this.compose(this.operators)(this.initValue);
-    console.log("result:", result);
     this.initValue = 0;
     return Number.isNaN(result) ? fallback : result;
   }
 }
 
-export interface ILazyCalc {
+interface ILazyCalc {
   lazy(init?: number): ILazyCalc;
   add(number: number): ILazyCalc;
   divide(y: number): ILazyCalc;
@@ -133,3 +123,4 @@ const instantce: LzCalcPlugin = {
   }
 };
 export default instantce;
+export { ILazyCalc };
