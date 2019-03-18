@@ -1,3 +1,13 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/dreambo8563/vue-lazy-calc/compare/v0.1.4...v1.0.0) (2019-03-18)
+
+
+### Bug Fixes
+
+* **subtract:** missing subtract in typings ([d2dc028](https://github.com/dreambo8563/vue-lazy-calc/commit/d2dc028))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/dreambo8563/vue-lazy-calc/compare/v0.1.3...v0.1.4) (2019-03-18)
 
