@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![npm type definitions](https://img.shields.io/npm/types/vue-lazy-calc.svg?style=flat)
 ![npm](https://img.shields.io/npm/dt/vue-lazy-calc.svg?style=flat)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdreambo8563%2Fvue-lazy-calc.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdreambo8563%2Fvue-lazy-calc?ref=badge_shield)
 
 # vue-lazy-calc
 
@@ -76,3 +77,7 @@ console.log(addThree.value()) // 2.67+ 3 =>5.67
 
 1. when declare the result variable, no calculation excuted until value()
 2. you can reuse the declare variable
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdreambo8563%2Fvue-lazy-calc.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdreambo8563%2Fvue-lazy-calc?ref=badge_large)
