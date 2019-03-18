@@ -100,6 +100,7 @@ class LazyCalc {
 interface ILazyCalc {
   lazy(init?: number): ILazyCalc;
   add(number: number): ILazyCalc;
+  subtract(number: number): ILazyCalc;
   divide(y: number): ILazyCalc;
   multiply(y: number): ILazyCalc;
   round(precision?: number): ILazyCalc;
