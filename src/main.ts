@@ -107,7 +107,7 @@ class LazyCalc {
   }
 }
 
-export interface ILazyCalc {
+interface ILazyCalc {
   lazy(init?: number): ILazyCalc;
   add(number: number): ILazyCalc;
   divide(y: number): ILazyCalc;
@@ -133,3 +133,4 @@ const instantce: LzCalcPlugin = {
   }
 };
 export default instantce;
+export { ILazyCalc };
