@@ -1,5 +1,10 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/dreambo8563/vue-lazy-calc/compare/v0.1.1...v0.1.2) (2019-03-18)
+
+
+
 <a name="0.1.1"></a>
-## 0.1.1 (2019-03-18)
+## [0.1.1](https://github.com/dreambo8563/vue-lazy-calc/compare/7b52a3a...v0.1.1) (2019-03-18)
 
 
 ### Bug Fixes
