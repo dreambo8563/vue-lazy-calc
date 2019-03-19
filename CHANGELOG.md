@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.2...v1.0.3) (2019-03-19)
+
+
+### Features
+
+* **do operator:** receive fn in do ([60ac981](https://github.com/dreambo8563/vue-lazy-calc/commit/60ac981))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.1...v1.0.2) (2019-03-18)
 

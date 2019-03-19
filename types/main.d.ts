@@ -1,4 +1,5 @@
 import Vue, { VueConstructor } from "./vue";
+export declare type operatorFunc = (i: number | string) => number;
 interface ILazyCalc {
   lazy(init?: number): ILazyCalc;
   add(number: number): ILazyCalc;
@@ -8,6 +9,7 @@ interface ILazyCalc {
   round(precision?: number): ILazyCalc;
   floor(precision?: number): ILazyCalc;
   ceil(precision?: number): ILazyCalc;
+  do(fn: operatorFunc): ILazyCalc;
   value(fallback?: any): any;
 }
 export declare type LzCalcPlugin = {
