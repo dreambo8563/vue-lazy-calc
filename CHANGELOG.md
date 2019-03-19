@@ -1,3 +1,13 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.3...v1.0.4) (2019-03-19)
+
+
+### Features
+
+* **operator:** default ([74e5381](https://github.com/dreambo8563/vue-lazy-calc/commit/74e5381))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.2...v1.0.3) (2019-03-19)
 

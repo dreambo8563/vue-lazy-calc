@@ -52,6 +52,7 @@ interface ILazyCalc {
   floor(precision?: number): ILazyCalc
   ceil(precision?: number): ILazyCalc
   do(fn: operatorFunc): ILazyCalc
+  default(fallback: any): ILazyCalc
   value(fallback?: any): any
 }
 ```
@@ -60,6 +61,7 @@ interface ILazyCalc {
 - add/subtract/divide/multiple => + - \* / (simple calculation)
 - round/floor/ceil => deal with precision of the float number
 - value => excute the declared method chain with optional fallBack value(if the result is NaN)
+- default => set default value if previous operations get NaN
 - do => accept a custormized function for the number
 
 ### Examples
