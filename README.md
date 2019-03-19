@@ -9,6 +9,8 @@
 
 # vue-lazy-calc
 
+![](https://raw.githubusercontent.com/dreambo8563/static-assets/master/calculator.jpg)
+
 this is a just support simple calculation in lazy way.
 (inspired by lodash)
 
