@@ -7,10 +7,8 @@ export class LazyCalc {
   operators: operatorFunc[];
   private compose = (fns: operatorFunc[]) =>
     fns.reduceRight(
-      (prevFn: Function, nextFn: Function) => (...args: any[]) => {
-        console.log("LazyCalc-", args);
-        return nextFn(prevFn(...args));
-      },
+      (prevFn: Function, nextFn: Function) => (...args: any[]) =>
+        nextFn(prevFn(...args)),
       (i: any) => i
     );
   private createRound(methodName: CalcMethod, precision: number = 0) {
@@ -54,7 +52,6 @@ export class LazyCalc {
 
   add(y: number): LazyCalc {
     const operation = function(x: number | string) {
-      console.log("LazyCalc - add", y, x);
       if (Number.isNaN(+x) || Number.isNaN(+y)) {
         return NaN;
       }
@@ -103,17 +100,14 @@ export class LazyCalc {
   }
   ceil(precision: number = 0): LazyCalc {
     const operation = this.createRound("ceil", precision);
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   floor(precision: number = 0): LazyCalc {
     const operation = this.createRound("floor", precision);
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   round(precision: number = 0): LazyCalc {
     const operation = this.createRound("round", precision);
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   stream(s: LazyCalc): LazyStream {

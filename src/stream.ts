@@ -1,18 +1,10 @@
 import { LazyCalc, operatorFunc } from "./main";
-
-interface LazyStream {
-  add(y: LazyCalc): LazyStream;
-  default(fallback: any): LazyStream;
-  value(): any;
-}
 class LazyStream {
   private operators: operatorFunc[];
   private compose = (fns: operatorFunc[]) =>
     fns.reduceRight(
-      (prevFn: Function, nextFn: Function) => (...args: any[]) => {
-        console.log(args);
-        return nextFn(prevFn(...args));
-      },
+      (prevFn: Function, nextFn: Function) => (...args: any[]) =>
+        nextFn(prevFn(...args)),
       (i: any) => i
     );
   private clone(operators: operatorFunc[]) {
