@@ -49,6 +49,7 @@ interface ILazyCalc {
   round(precision?: number): ILazyCalc
   floor(precision?: number): ILazyCalc
   ceil(precision?: number): ILazyCalc
+  do(fn: operatorFunc): ILazyCalc
   value(fallback?: any): any
 }
 ```
@@ -57,6 +58,7 @@ interface ILazyCalc {
 - add/subtract/divide/multiple => + - \* / (simple calculation)
 - round/floor/ceil => deal with precision of the float number
 - value => excute the declared method chain with optional fallBack value(if the result is NaN)
+- do => accept a custormized function for the number
 
 ### Examples
 
@@ -79,9 +81,10 @@ console.log(addThree.value()) // 2.67+ 3 =>5.67
 1. when declare the result variable, no calculation excuted until value()
 2. you can reuse the declare variable
 
-
 ## License
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdreambo8563%2Fvue-lazy-calc.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdreambo8563%2Fvue-lazy-calc?ref=badge_large)
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
