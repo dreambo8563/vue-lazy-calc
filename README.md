@@ -21,6 +21,11 @@ this is a just support simple calculation in lazy way.
 - lazy evaluation
 - chaining methods
 
+### TODO
+
+- [] seperate simple lazy class and base class
+- [] support more operator in stream api
+
 ### Install
 
 ```cmd
