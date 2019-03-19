@@ -1,7 +1,8 @@
 import Vue, { VueConstructor } from "vue";
+import LazyStream from "./stream";
 export type operatorFunc = (i: number | string) => number;
 type CalcMethod = "ceil" | "floor" | "round";
-class LazyCalc {
+export class LazyCalc {
   initValue: number = 0;
   operators: operatorFunc[];
   private compose = (fns: operatorFunc[]) =>
@@ -59,13 +60,6 @@ class LazyCalc {
 
     return this.clone([operation, ...this.operators]);
   }
-  do(fn: operatorFunc): LazyCalc {
-    const operation = function(y: number | string) {
-      return fn(+y);
-    };
-    // this.operators.unshift(operation);
-    return this.clone([operation, ...this.operators]);
-  }
   divide(y: number): LazyCalc {
     const operation = function(x: number | string) {
       if (Number.isNaN(+x) || Number.isNaN(+y)) {
@@ -97,54 +91,46 @@ class LazyCalc {
     // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
+  do(fn: operatorFunc): LazyCalc {
+    const operation = function(y: number | string) {
+      return fn(+y);
+    };
+    // this.operators.unshift(operation);
+    return this.clone([operation, ...this.operators]);
+  }
   ceil(precision: number = 0): LazyCalc {
     const operation = this.createRound("ceil", precision);
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   floor(precision: number = 0): LazyCalc {
     const operation = this.createRound("floor", precision);
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   round(precision: number = 0): LazyCalc {
     const operation = this.createRound("round", precision);
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
-  default(fallback: any) {
+  stream(s: LazyCalc): LazyStream {
+    return new LazyStream().add(s);
+  }
+  default(fallback: any): LazyCalc {
     const operation = function(x: number | string) {
       return Number.isNaN(+x) ? fallback : x;
     };
     return this.clone([operation, ...this.operators]);
   }
-  value(fallback: any = 0) {
-    const result = this.compose(this.operators)(this.initValue);
-    this.initValue = 0;
-    return Number.isNaN(result) ? fallback : result;
+  value(): any {
+    return this.compose(this.operators)(this.initValue);
   }
 }
 
-interface ILazyCalc {
-  lazy(init?: number): ILazyCalc;
-  add(number: number): ILazyCalc;
-  subtract(number: number): ILazyCalc;
-  divide(y: number): ILazyCalc;
-  multiply(y: number): ILazyCalc;
-  round(precision?: number): ILazyCalc;
-  floor(precision?: number): ILazyCalc;
-  ceil(precision?: number): ILazyCalc;
-  do(fn: operatorFunc): ILazyCalc;
-  default(fallback: any): ILazyCalc;
-  value(fallback?: any): any;
-}
 export type LzCalcPlugin = {
   install(vue: VueConstructor<Vue>, options?: any): void;
 };
 const instantce: LzCalcPlugin = {
   install(vue, options) {
     let alias = "$lzCalc";
-    const p = new LazyCalc(options) as ILazyCalc;
+    const p = new LazyCalc(options);
     vue.prototype[alias] = p;
     Object.defineProperty(Vue, `${alias}`, {
       get() {
@@ -154,4 +140,3 @@ const instantce: LzCalcPlugin = {
   }
 };
 export default instantce;
-export { ILazyCalc };
