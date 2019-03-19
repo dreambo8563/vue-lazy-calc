@@ -28,8 +28,8 @@ npm install vue-lazy-calc --save
 ### Quick Start
 
 ```js
-import device from "vue-lazy-calc"
-Vue.use(device)
+import lzCalc from "vue-lazy-calc"
+Vue.use(lzCalc)
 ```
 
 ### Methods
