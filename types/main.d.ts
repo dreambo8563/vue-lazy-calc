@@ -10,6 +10,7 @@ interface ILazyCalc {
   floor(precision?: number): ILazyCalc;
   ceil(precision?: number): ILazyCalc;
   do(fn: operatorFunc): ILazyCalc;
+  default(fallback: any): ILazyCalc;
   value(fallback?: any): any;
 }
 export declare type LzCalcPlugin = {

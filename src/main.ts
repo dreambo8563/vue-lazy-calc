@@ -112,6 +112,12 @@ class LazyCalc {
     // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
+  default(fallback: any) {
+    const operation = function(x: number | string) {
+      return Number.isNaN(+x) ? fallback : x;
+    };
+    return this.clone([operation, ...this.operators]);
+  }
   value(fallback: any = 0) {
     const result = this.compose(this.operators)(this.initValue);
     this.initValue = 0;
@@ -129,6 +135,7 @@ interface ILazyCalc {
   floor(precision?: number): ILazyCalc;
   ceil(precision?: number): ILazyCalc;
   do(fn: operatorFunc): ILazyCalc;
+  default(fallback: any): ILazyCalc;
   value(fallback?: any): any;
 }
 export type LzCalcPlugin = {
