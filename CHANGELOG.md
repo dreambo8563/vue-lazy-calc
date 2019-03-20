@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.1.0...v1.1.1) (2019-03-20)
+
+
+### Bug Fixes
+
+* **fix edge case with object:** not to conver to number in do operator ([43befc9](https://github.com/dreambo8563/vue-lazy-calc/commit/43befc9))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.7...v1.1.0) (2019-03-20)
 
