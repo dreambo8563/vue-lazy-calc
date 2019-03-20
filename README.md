@@ -104,6 +104,13 @@ console.log(addThree.value()) // 2.67+ 3 =>5.67
 ```ts
 declare class LazyStream {
   add(y: LazyCalc): LazyStream
+  subtract(y: LazyCalc): LazyStream
+  multiply(y: LazyCalc): LazyStream
+  divide(y: LazyCalc): LazyStream
+  round(precision?: number): LazyStream
+  ceil(precision?: number): LazyStream
+  floor(precision?: number): LazyStream
+  do(fn: operatorFunc): LazyStream
   default(fallback: any): LazyStream
   value(): any
 }
