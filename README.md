@@ -23,8 +23,10 @@ this is a just support simple calculation in lazy way.
 
 ### TODO:
 
-- [x] seperate simple lazy class and base class
-- [ ] support more operator in stream api
+- [x] seperate simple lazy class from base class
+- [x] support more operator in stream api
+- [ ] support bigint calculation
+- [ ] support array cal like sum
 
 ### Install
 
