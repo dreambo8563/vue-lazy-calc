@@ -88,7 +88,7 @@ export class LazyCalc {
   }
   do(fn: operatorFunc): LazyCalc {
     const operation = function(y: number | string) {
-      return fn(+y);
+      return fn(y);
     };
     // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
