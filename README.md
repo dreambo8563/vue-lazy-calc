@@ -25,8 +25,6 @@ this is a just support simple calculation in lazy way.
 
 - [x] seperate simple lazy class from base class
 - [x] support more operator in stream api
-- [ ] support bigint calculation
-- [ ] support array cal like sum
 
 ### Install
 
