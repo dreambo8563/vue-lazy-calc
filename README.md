@@ -23,7 +23,7 @@ this is a just support simple calculation in lazy way.
 
 ### TODO:
 
-- [ ] seperate simple lazy class and base class
+- [x] seperate simple lazy class and base class
 - [ ] support more operator in stream api
 
 ### Install
@@ -46,9 +46,22 @@ Vue.use(lzCalc)
 
 ### API list
 
+#### base
+
 ```ts
-interface LazyCalc {
+export declare class LazyBase {
   lazy(init?: number): LazyCalc
+  stream(s?: LazyCalc): LazyStream
+}
+```
+
+- lazy => init a new instance with optional initValue
+- stream => init a stream to operate between multiple lazy instance with optional init instantce
+
+#### simple
+
+```ts
+export declare class LazyCalc {
   add(y: number): LazyCalc
   divide(y: number): LazyCalc
   subtract(y: number): LazyCalc
@@ -57,45 +70,16 @@ interface LazyCalc {
   ceil(precision?: number): LazyCalc
   floor(precision?: number): LazyCalc
   round(precision?: number): LazyCalc
-  stream(s: LazyCalc): LazyStream
   default(fallback: any): LazyCalc
   value(): any
 }
 ```
 
-- lazy => init a new instance with optional initValue
 - add/subtract/divide/multiple => + - \* / (simple calculation) between numbers
 - round/floor/ceil => deal with precision of the float number
 - value => excute the declared method chain
 - default => set default value if previous operations get NaN
 - do => accept a custormized function for the number
-- stream => init a stream to operate between multiple lazy instance with optional init instantce
-
-#### Stream
-
-```ts
-declare class LazyStream {
-  add(y: LazyCalc): LazyStream
-  default(fallback: any): LazyStream
-  value(): any
-}
-```
-
-- add
-
-```js
-const result = this.$lzCalc
-  .lazy(1)
-  .add(3)
-  .multiply(2)
-  .divide(3)
-  .round(2)
-
-const tmp = this.$lzCalc.lazy(2).add(3)
-const s = this.$lzCalc.stream(result).add(tmp)
-
-console.log(s.value()) // 2.67 + 5 => 7.67
-```
 
 ### Examples
 
@@ -113,6 +97,30 @@ console.log(result.value()) // 2.67
 
 const addThree = result.add(3)
 console.log(addThree.value()) // 2.67+ 3 =>5.67
+```
+
+#### Stream
+
+```ts
+declare class LazyStream {
+  add(y: LazyCalc): LazyStream
+  default(fallback: any): LazyStream
+  value(): any
+}
+```
+
+```js
+const result = this.$lzCalc
+  .lazy(1)
+  .add(3)
+  .multiply(2)
+  .divide(3)
+  .round(2)
+
+const tmp = this.$lzCalc.lazy(2).add(3)
+const s = this.$lzCalc.stream(result).add(tmp)
+
+console.log(s.value()) // 2.67 + 5 => 7.67
 ```
 
 1. when declare the result variable, no calculation excuted until value()

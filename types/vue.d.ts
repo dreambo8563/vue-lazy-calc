@@ -1,5 +1,5 @@
 import Vue, { VueConstructor } from "vue";
-import { LazyCalc } from "./main";
+import { LazyCalc } from "./simple";
 declare module "vue/types/vue" {
   interface Vue {
     $lzCalc: LazyCalc;
