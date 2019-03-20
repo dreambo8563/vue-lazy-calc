@@ -1,4 +1,4 @@
-import { LazyCalc } from "./main";
+import { LazyCalc } from "./simple";
 declare class LazyStream {
     private operators;
     private compose;

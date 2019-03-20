@@ -1,4 +1,5 @@
-import { LazyCalc, operatorFunc } from "./main";
+import { operatorFunc } from "./main";
+import { LazyCalc } from "./simple";
 class LazyStream {
   private operators: operatorFunc[];
   private compose = (fns: operatorFunc[]) =>

@@ -23,7 +23,7 @@ this is a just support simple calculation in lazy way.
 
 ### TODO:
 
-- [ ] seperate simple lazy class and base class
+- [x] seperate simple lazy class and base class
 - [ ] support more operator in stream api
 
 ### Install
