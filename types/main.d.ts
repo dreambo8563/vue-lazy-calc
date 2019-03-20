@@ -4,12 +4,12 @@ import { LazyCalc } from "./simple";
 export declare type operatorFunc = (i: number | string) => number;
 export declare type CalcMethod = "ceil" | "floor" | "round";
 export declare class LazyBase {
-    constructor();
-    lazy(init?: number): LazyCalc;
-    stream(s?: LazyCalc): LazyStream;
+  constructor();
+  static lazy(init?: number): LazyCalc;
+  static stream(s?: LazyCalc): LazyStream;
 }
 export declare type LzCalcPlugin = {
-    install(vue: VueConstructor<Vue>, options?: any): void;
+  install(vue: VueConstructor<Vue>, options?: any): void;
 };
 declare const instantce: LzCalcPlugin;
 export default instantce;

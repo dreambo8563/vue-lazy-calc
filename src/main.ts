@@ -6,10 +6,10 @@ export type CalcMethod = "ceil" | "floor" | "round";
 
 export class LazyBase {
   constructor() {}
-  lazy(init?: number): LazyCalc {
+  static lazy(init?: number): LazyCalc {
     return new LazyCalc(init);
   }
-  stream(s?: LazyCalc): LazyStream {
+  static stream(s?: LazyCalc): LazyStream {
     return s ? new LazyStream().add(s) : new LazyStream();
   }
 }
@@ -20,11 +20,10 @@ export type LzCalcPlugin = {
 const instantce: LzCalcPlugin = {
   install(vue, options) {
     let alias = "$lzCalc";
-    const p = new LazyBase();
-    vue.prototype[alias] = p;
+    vue.prototype[alias] = LazyBase;
     Object.defineProperty(Vue, `${alias}`, {
       get() {
-        return p;
+        return LazyBase;
       }
     });
   }
