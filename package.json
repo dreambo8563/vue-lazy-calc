@@ -1,6 +1,6 @@
 {
   "name": "vue-lazy-calc",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "private": false,
   "author": "dreambo8563",
   "main": "dist/vue-lazy-calc.umd.min.js",
