@@ -1,5 +1,6 @@
 import { operatorFunc, CalcMethod } from "./main";
 import { LazyCalc } from "./simple";
+
 class LazyStream {
   private operators: operatorFunc[];
   private compose = (fns: operatorFunc[]) =>

@@ -3,6 +3,10 @@ import LazyStream from "./stream";
 import { LazyCalc } from "./simple";
 export declare type operatorFunc = (i: number | string) => number;
 export declare type CalcMethod = "ceil" | "floor" | "round";
+export interface ILazyBase {
+  lazy(init?: number | object): LazyCalc;
+  stream(s?: LazyCalc): LazyStream;
+}
 export declare class LazyBase {
   constructor();
   static lazy(init?: number | object): LazyCalc;

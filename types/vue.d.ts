@@ -1,17 +1,17 @@
 import Vue, { VueConstructor } from "vue";
-import { LazyBase } from "./main";
+import { ILazyBase } from "./main";
 declare module "vue/types/vue" {
   interface Vue {
-    $lzCalc: LazyBase;
+    $lzCalc: ILazyBase;
   }
   interface VueConstructor {
-    $lzCalc: LazyBase;
+    $lzCalc: ILazyBase;
   }
 }
 
 declare module "vue/types/options" {
   interface ComponentOptions<V extends Vue> {
-    $lzCalc?: LazyBase;
+    $lzCalc?: ILazyBase;
   }
 }
 
