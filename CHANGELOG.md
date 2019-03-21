@@ -1,3 +1,13 @@
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.1.3...v1.1.4) (2019-03-21)
+
+
+### Bug Fixes
+
+* **typings:** root type ([c3d0055](https://github.com/dreambo8563/vue-lazy-calc/commit/c3d0055))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.1.2...v1.1.3) (2019-03-21)
 
