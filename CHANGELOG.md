@@ -1,10 +1,15 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.1.2...v1.1.3) (2019-03-21)
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.1.1...v1.1.2) (2019-03-20)
 
 
 
 <a name="1.1.1"></a>
-## [1.1.1](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.1.0...v1.1.1) (2019-03-20)
+## [1.1.1](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.7...v1.1.1) (2019-03-20)
 
 
 ### Bug Fixes
@@ -13,18 +18,8 @@
 
 
 
-<a name="1.1.0"></a>
-# [1.1.0](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.7...v1.1.0) (2019-03-20)
-
-
-
 <a name="1.0.7"></a>
-## [1.0.7](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.6...v1.0.7) (2019-03-20)
-
-
-
-<a name="1.0.6"></a>
-## [1.0.6](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.5...v1.0.6) (2019-03-19)
+## [1.0.7](https://github.com/dreambo8563/vue-lazy-calc/compare/v1.0.5...v1.0.7) (2019-03-20)
 
 
 

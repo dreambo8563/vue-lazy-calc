@@ -1,7 +1,7 @@
 import { operatorFunc, CalcMethod } from "./main";
 
 export class LazyCalc {
-  initValue: number = 0;
+  initValue: number | object = 0;
   operators: operatorFunc[];
   private compose = (fns: operatorFunc[]) =>
     fns.reduceRight(
@@ -11,8 +11,8 @@ export class LazyCalc {
     );
   private createRound(methodName: CalcMethod, precision: number = 0) {
     const func = <operatorFunc>Math[methodName];
-    return function(number: number | string): number {
-      if (Number.isNaN(+number) || Number.isNaN(+precision)) {
+    return (number: number | string): number => {
+      if (this.isInvalid(number) || this.isInvalid(precision)) {
         return NaN;
       }
       precision =
@@ -33,8 +33,11 @@ export class LazyCalc {
       return func(number);
     };
   }
-  constructor(init?: number) {
-    this.initValue = Number.isNaN(init || NaN) ? NaN : init || 0;
+  private isInvalid(x: number | string) {
+    return Number.isNaN(+x) || !Number.isFinite(+x);
+  }
+  constructor(init: number | object = 0) {
+    this.initValue = init;
     this.operators = [];
     return this;
   }
@@ -46,8 +49,8 @@ export class LazyCalc {
   }
 
   add(y: number): LazyCalc {
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(y)) {
         return NaN;
       }
       return +x + +y;
@@ -56,41 +59,37 @@ export class LazyCalc {
     return this.clone([operation, ...this.operators]);
   }
   divide(y: number): LazyCalc {
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(y)) {
         return NaN;
       }
       return +x / +y;
     };
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
 
   subtract(y: number): LazyCalc {
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(y)) {
         return NaN;
       }
       return +x - +y;
     };
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   multiply(y: number): LazyCalc {
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(y)) {
         return NaN;
       }
       return +x * +y;
     };
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
-  do(fn: operatorFunc): LazyCalc {
-    const operation = function(y: number | string) {
+  do(fn: Function): LazyCalc {
+    const operation = function(y: number | string | object) {
       return fn(y);
     };
-    // this.operators.unshift(operation);
     return this.clone([operation, ...this.operators]);
   }
   ceil(precision: number = 0): LazyCalc {
@@ -107,8 +106,8 @@ export class LazyCalc {
   }
 
   default(fallback: any): LazyCalc {
-    const operation = function(x: number | string) {
-      return Number.isNaN(+x) ? fallback : x;
+    const operation = (x: number | string) => {
+      return this.isInvalid(x) ? fallback : x;
     };
     return this.clone([operation, ...this.operators]);
   }
