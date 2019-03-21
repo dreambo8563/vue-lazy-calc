@@ -15,6 +15,7 @@ describe("simple class", () => {
     const base = LazyBase.lazy(1).multiply(4);
     expect(base.value()).toBe(4);
   });
+
   it("multiply - float", () => {
     const base = LazyBase.lazy(1.5).multiply(4);
     expect(base.value()).toBe(6);
@@ -55,16 +56,62 @@ describe("simple class", () => {
       .default("m");
     expect(base.value()).toBe(100);
   });
-  it("precision - null", () => {
+
+  it("precision - without", () => {
     const base = LazyBase.lazy(1.5)
       .divide(1)
       .ceil()
       .default("m");
     expect(base.value()).toBe(2);
   });
+
+  it("precision - null", () => {
+    const base = LazyBase.lazy(1.5)
+      .divide(1)
+      .ceil(null)
+      .default("m");
+    const base1 = LazyBase.lazy(1.5)
+      .divide(1)
+      .ceil(0)
+      .default("m");
+    expect(base.value()).toEqual(base1.value());
+  });
+
   it("default", () => {
     const base = LazyBase.lazy(1.5)
       .divide(0)
+      .default(99);
+    expect(base.value()).toBe(99);
+  });
+
+  it("add with invalid", () => {
+    const base = LazyBase.lazy(1.5)
+      .divide(0)
+      .add(6)
+      .default(99);
+    expect(base.value()).toBe(99);
+  });
+
+  it("subtract with invalid", () => {
+    const base = LazyBase.lazy(1.5)
+      .divide(0)
+      .subtract(6)
+      .default(99);
+    expect(base.value()).toBe(99);
+  });
+
+  it("divide with invalid", () => {
+    const base = LazyBase.lazy(1.5)
+      .divide(0)
+      .divide(6)
+      .default(99);
+    expect(base.value()).toBe(99);
+  });
+
+  it("multiply with invalid", () => {
+    const base = LazyBase.lazy(1.5)
+      .divide(0)
+      .multiply(6)
       .default(99);
     expect(base.value()).toBe(99);
   });
