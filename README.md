@@ -12,7 +12,7 @@
 
 ![](https://raw.githubusercontent.com/dreambo8563/static-assets/master/calculator.jpg)
 
-this is a just support simple calculation in lazy way.
+this is a simple calculation plugin in lazy way.
 (inspired by lodash)
 
 **features**
@@ -21,6 +21,7 @@ this is a just support simple calculation in lazy way.
 - strong typed
 - lazy evaluation
 - chaining methods
+- code coverage 100%
 
 ### TODO:
 
