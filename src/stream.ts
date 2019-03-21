@@ -14,11 +14,14 @@ class LazyStream {
     tmp.operators = operators;
     return tmp;
   }
+  private isInvalid(x: number | string) {
+    return Number.isNaN(+x) || !Number.isFinite(+x);
+  }
   private createRound(methodName: CalcMethod, precision: number = 0) {
     const func = <operatorFunc>Math[methodName];
-    return function(number: number | string): number {
+    return (number: number | string): number => {
       // const _number = number.value()
-      if (Number.isNaN(+number) || Number.isNaN(+precision)) {
+      if (this.isInvalid(number) || this.isInvalid(precision)) {
         return NaN;
       }
       precision =
@@ -45,9 +48,9 @@ class LazyStream {
   }
 
   add(y: LazyCalc): LazyStream {
-    const operation = function(x: number | string) {
+    const operation = (x: number | string) => {
       const _y = y.value();
-      if (Number.isNaN(+x) || Number.isNaN(+_y)) {
+      if (this.isInvalid(x) || this.isInvalid(_y)) {
         return NaN;
       }
       return +x + +_y;
@@ -57,8 +60,8 @@ class LazyStream {
 
   subtract(y: LazyCalc): LazyStream {
     const _y = y.value();
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+_y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(_y)) {
         return NaN;
       }
       return +x - +_y;
@@ -67,8 +70,8 @@ class LazyStream {
   }
   multiply(y: LazyCalc): LazyStream {
     const _y = y.value();
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+_y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(_y)) {
         return NaN;
       }
       return +x * +_y;
@@ -77,8 +80,8 @@ class LazyStream {
   }
   divide(y: LazyCalc): LazyStream {
     const _y = y.value();
-    const operation = function(x: number | string) {
-      if (Number.isNaN(+x) || Number.isNaN(+_y)) {
+    const operation = (x: number | string) => {
+      if (this.isInvalid(x) || this.isInvalid(_y)) {
         return NaN;
       }
       return +x / +_y;
@@ -98,7 +101,7 @@ class LazyStream {
     const operation = this.createRound("floor", precision);
     return this.clone([operation, ...this.operators]);
   }
-  do(fn: operatorFunc): LazyStream {
+  do(fn: Function): LazyStream {
     const operation = function(y: number | string) {
       return fn(y);
     };
@@ -106,8 +109,8 @@ class LazyStream {
     return this.clone([operation, ...this.operators]);
   }
   default(fallback: any): LazyStream {
-    const operation = function(x: number | string) {
-      return Number.isNaN(+x) ? fallback : +x;
+    const operation = (x: number | string) => {
+      return this.isInvalid(x) ? fallback : +x;
     };
     return this.clone([operation, ...this.operators]);
   }
