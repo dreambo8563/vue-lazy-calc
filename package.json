@@ -12,7 +12,7 @@
     "lint": "vue-cli-service lint",
     "build-bundle": "npm run lint && vue-cli-service build --target lib --name vue-lazy-calc ./src/main.ts",
     "report": "npm run lint && vue-cli-service build --report --target lib --name vue-lazy-calc ./src/main.ts",
-    "test": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit && codecov --token=08d1a35e-d4a8-4352-99e5-b739c361c12a",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "typings": "types/main.d.ts",
