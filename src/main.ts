@@ -6,7 +6,7 @@ export type CalcMethod = "ceil" | "floor" | "round";
 
 export class LazyBase {
   constructor() {}
-  static lazy(init: number|object = 0): LazyCalc {
+  static lazy(init: number | object = 0): LazyCalc {
     return new LazyCalc(init);
   }
   static stream(s?: LazyCalc): LazyStream {
