@@ -21,6 +21,7 @@ export class LazyCalc {
           : precision >= 0
           ? Math.min(precision, 292)
           : Math.max(precision, -292);
+
       if (precision) {
         // Shift with exponential notation to avoid floating-point issues.
         // See [MDN](https://mdn.io/round#Examples) for more details.
