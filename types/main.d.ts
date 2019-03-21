@@ -5,7 +5,7 @@ export declare type operatorFunc = (i: number | string) => number;
 export declare type CalcMethod = "ceil" | "floor" | "round";
 export declare class LazyBase {
   constructor();
-  static lazy(init?: number): LazyCalc;
+  static lazy(init?: number | object): LazyCalc;
   static stream(s?: LazyCalc): LazyStream;
 }
 export declare type LzCalcPlugin = {
