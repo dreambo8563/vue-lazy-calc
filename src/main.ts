@@ -4,6 +4,10 @@ import { LazyCalc } from "./simple";
 export type operatorFunc = (i: number | string) => number;
 export type CalcMethod = "ceil" | "floor" | "round";
 
+export interface ILazyBase {
+  lazy(init?: number | object): LazyCalc;
+  stream(s?: LazyCalc): LazyStream;
+}
 export class LazyBase {
   constructor() {}
   static lazy(init: number | object = 0): LazyCalc {
@@ -20,7 +24,7 @@ export type LzCalcPlugin = {
 const instantce: LzCalcPlugin = {
   install(vue, options) {
     let alias = "$lzCalc";
-    vue.prototype[alias] = LazyBase;
+    vue.prototype[alias] = LazyBase as ILazyBase;
     Object.defineProperty(Vue, `${alias}`, {
       get() {
         return LazyBase;
