@@ -9,7 +9,7 @@ export interface ILazyBase {
   stream(s?: LazyCalc): LazyStream;
 }
 export class LazyBase {
-  constructor() {}
+  // constructor() {}
   static lazy(init: number | object = 0): LazyCalc {
     return new LazyCalc(init);
   }

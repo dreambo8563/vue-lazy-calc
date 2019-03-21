@@ -13,7 +13,7 @@
     "baseUrl": ".",
     "types": ["jest", "webpack-env"],
     "declaration": true,
-    // "typeRoots": ["types"],
+    // "typeRoots": ["types", "node_modules/@types"],
     "outDir": "./types",
     "paths": {
       "@/*": ["src/*"]
@@ -24,7 +24,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
-    // "tests/**/*.ts",
+    // "tests/**/*.ts"
     // "tests/**/*.tsx"
   ],
   "exclude": ["node_modules"]
