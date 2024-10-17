@@ -18,7 +18,7 @@
   "typings": "types/main.d.ts",
   "description": "A simple calculator with lazy evaluation featuer",
   "dependencies": {
-    "vue": "^2.6.6"
+    "vue": "^3.0.0"
   },
   "repository": {
     "type": "git",
